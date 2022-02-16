@@ -1,5 +1,6 @@
 const taskCreate = require("../services/taskCreate");
 const tasksList = require("../services/tasksList");
+const taskUpdate = require("../services/taskUpdate");
 const { success } = require("../util/library/statusCode");
 
 const findAllTasksController = async (_request, response, next) => {
@@ -11,6 +12,7 @@ const findAllTasksController = async (_request, response, next) => {
     return next(error);
   }
 };
+
 const createTaskController = async (request, response, next) => {
   try {
     const task = request.body;
@@ -22,7 +24,20 @@ const createTaskController = async (request, response, next) => {
   }
 };
 
+const updateTaskController = async (request, response, next) => {
+  try {
+    const status = request.body;
+    const { id } = request.params;
+    const createdObj = await taskUpdate(id, status);
+    return response.status(success).json(createdObj);
+  } catch (error) {
+    console.log('UPDATE TASK:', error);
+    return next(error);
+  }
+};
+
 module.exports = {
   findAllTasksController,
-  createTaskController
+  createTaskController,
+  updateTaskController
 };
