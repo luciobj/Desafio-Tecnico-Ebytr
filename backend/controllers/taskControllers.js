@@ -1,4 +1,5 @@
 const taskCreate = require("../services/taskCreate");
+const taskDelete = require("../services/taskDelete");
 const tasksList = require("../services/tasksList");
 const taskUpdate = require("../services/taskUpdate");
 const { success, created } = require("../util/library/statusCode");
@@ -36,8 +37,20 @@ const updateTaskController = async (request, response, next) => {
   }
 };
 
+const deleteTaskController = async (request, response, next) => {
+  try {
+    const { id } = request.params;
+    const deleteStatus = await taskDelete(id);
+    return response.status(success).json(deleteStatus);
+  } catch (error) {
+    console.log('DELETE TASK:', error);
+    return next(error);
+  }
+};
+
 module.exports = {
   findAllTasksController,
   createTaskController,
-  updateTaskController
+  updateTaskController,
+  deleteTaskController
 };
