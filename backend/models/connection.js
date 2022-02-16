@@ -9,10 +9,10 @@ const options = {
 const mongoUrl = `mongodb://${process.env.HOST || 'mongodb'}:27017/ToDoList`;
 const dbName = 'ToDoList';
 
-module.exports = () => {
+module.exports = async () => {
   try {
-    const connection = mongodb.connect(mongoUrl, options);
-    return connection.db(dbName);
+    const connection = await mongodb.connect(mongoUrl, options);
+    return await connection.db(dbName);
   } catch (error) {
     console.error(error);
     process.exit(1);
