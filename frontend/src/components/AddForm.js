@@ -13,7 +13,7 @@ function AddForm() {
           Completed
         </option>
       </select>
-      <button>Add Task</button>
+      <button type="button">Add Task</button>
     </form>
   );
 }
