@@ -1,4 +1,4 @@
-const { internalError } = require('../utils/dictionary/statusCode');
+const { internalError } = require('../util/library/statusCode');
 
 const errorMiddleware = (error, _request, resolve, _next) => {
   if (error.status) {
