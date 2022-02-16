@@ -9,5 +9,5 @@ module.exports = async (id, status) => {
   if (modifiedCount === 1) {
     return;
   }
-  next('error');
+  return false;
 };

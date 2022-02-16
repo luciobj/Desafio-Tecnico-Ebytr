@@ -10,5 +10,5 @@ module.exports = async (task) => {
   if (modifiedCount === 1) {
     return insertedId;
   }
-  next('error');
+  return false;
 };

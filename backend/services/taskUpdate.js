@@ -8,6 +8,7 @@ module.exports = async (id, status) => {
   if (!ObjectId(id)) throw errorConstructor(badRequest, 'Invalid id');
   if (!findTaskById(id)) throw errorConstructor(notFound, 'Task not found');
   if (!status) throw errorConstructor(badRequest, 'Missing or empty status');
-  await updateTask(id, status);
+  const updatedStatus = await updateTask(id, status);
+  if (!updatedStatus) throw new Error;
   return 'Done';
 };
