@@ -5,10 +5,11 @@ module.exports = async (task) => {
   taskValidate(task);
   const taskObject = {
     name: task.name,
-    status: task.satus,
+    status: task.status,
     createdAt: ''
   };
   const createdId = await createTask(taskObject);
   taskObject._id = createdId;
+  delete taskObject.createdAt;
   return taskObject;
 };
