@@ -14,6 +14,7 @@ function TaskCard(name, status, date) {
         </option>
       </select>
       <p data-testid="task-card-status"> {date} </p>
+      <button type="button">Delete</button>
     </div>
   );
 }
