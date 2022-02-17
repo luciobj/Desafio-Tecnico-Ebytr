@@ -6,7 +6,7 @@ module.exports = async (id) => {
   const { deletedCount } = await connection.collection('tasks')
     .deleteOne({ _id: ObjectId(id) });
   if (deletedCount === 1) {
-    return;
+    return deletedCount;
   }
   return false;
 };

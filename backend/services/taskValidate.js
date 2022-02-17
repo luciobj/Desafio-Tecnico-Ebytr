@@ -5,6 +5,6 @@ const { badRequest } = require("../util/library/statusCode");
 module.exports = (task) => {
   const { error } = taskSchema.validate(task);
   if (error) {
-    next(errorConstructor(badRequest, error.message));
+    throw errorConstructor(badRequest, error.message);
   }
 };
